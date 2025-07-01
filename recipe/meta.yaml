@@ -1,5 +1,6 @@
 {% set name = "calkulate" %}
-{% set version = "23.6.2" %}
+{% set version = "23.7.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +8,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/calkulate-{{ version }}.tar.gz
-  sha256: f30d929c14fb1266c72855e2c560a5b6cf1bbddf4b6a3bdc99f6844261b260fb
+  sha256: 2083daa44ce5b88a77c53ce090cff872d9c21d9ba8b73f413fde4b83ba8f81d1
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -21,7 +22,7 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
-    - pyco2sys
+    - pyco2sys >=1.8,<2
     - matplotlib-base
     - numpy
     - openpyxl
